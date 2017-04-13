@@ -471,11 +471,15 @@ class MediaLibrary
      * @param string $path Specifies the file path relative the the Library root.
      * @return string
      */
-    public function getPathUrl($path)
-    {
-        $path = $this->validatePath($path);
-
-        return $this->storagePath.$path;
+    public function getPathUrl($path)                                                                                                                                                                              
+    {                                                                                                                                                                                                              
+        $path = $this->validatePath($path);                                                                                                                                                                        
+        if (strpos($path, '/storage/') !== false) {                                                                                                                                                                
+             return $path;                                                                                                                                                                                         
+        }                                                                                                                                                                                                          
+        else {                                                                                                                                                                                                     
+            return $this->storagePath.$path;                                                                                                                                                                       
+        }                                                                                                                                                                                                          
     }
 
     /**
